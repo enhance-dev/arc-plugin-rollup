@@ -34,7 +34,7 @@ async function build(inv) {
         plugins: [resolve()]
       })
 
-      bundle.write({
+      await bundle.write({
         file: outFile,
         format: 'es'
       })
