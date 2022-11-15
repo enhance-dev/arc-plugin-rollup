@@ -14,7 +14,7 @@ async function build(inv) {
 
   if (existsSync(browserDir)) {
     const files = await readdir(browserDir)
-    files.forEach(async file => {
+    for (let file of files) {
       const inFile = join(
         cwd,
         'app',
@@ -38,7 +38,7 @@ async function build(inv) {
         file: outFile,
         format: 'es'
       })
-    })
+    }
   }
 }
 

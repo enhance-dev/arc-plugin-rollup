@@ -28,7 +28,7 @@ test('Get rolled up main file', async t => {
 test('cleanup', async t => {
   t.plan(1)
   const public = join(workingDirectory, 'public')
-  const removed = await rm(public, { force: true, recursive: true })
   await sandbox.end()
+  const removed = await rm(public, { force: true, recursive: true })
   t.pass('Shut down Sandbox')
 })
