@@ -43,15 +43,6 @@ module.exports = {
   sandbox: {
     async start({ inventory }) {
       await build(inventory.inv)
-    }
-  },
-}
-
-/*
-module.exports = {
-  sandbox: {
-    async start({ inventory }) {
-      await build(inventory.inv)
     },
 
     async watcher ({ inventory }) {
@@ -65,4 +56,3 @@ module.exports = {
     }
   }
 }
-*/
