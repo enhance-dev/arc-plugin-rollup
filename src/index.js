@@ -1,5 +1,6 @@
 const { join } = require('path')
 const { readdir } = require('fs/promises')
+const { existsSync } = require('fs')
 const { rollup } = require('rollup')
 const resolve = require('@rollup/plugin-node-resolve')
 
@@ -11,32 +12,34 @@ async function build(inv) {
     'browser'
   )
 
-  const files = await readdir(browserDir)
-  files.forEach(async file => {
-    const inFile = join(
-      cwd,
-      'app',
-      'browser',
-      file
-    )
+  if (existsSync(browserDir)) {
+    const files = await readdir(browserDir)
+    files.forEach(async file => {
+      const inFile = join(
+        cwd,
+        'app',
+        'browser',
+        file
+      )
 
-    const outFile = join(
-      cwd,
-      inv.static?.folder || 'public',
-      'pages',
-      file
-    )
+      const outFile = join(
+        cwd,
+        inv.static?.folder || 'public',
+        'pages',
+        file
+      )
 
-    const bundle = await rollup({
-      input: inFile,
-      plugins: [resolve()]
+      const bundle = await rollup({
+        input: inFile,
+        plugins: [resolve()]
+      })
+
+      bundle.write({
+        file: outFile,
+        format: 'es'
+      })
     })
-
-    bundle.write({
-      file: outFile,
-      format: 'es'
-    })
-  })
+  }
 }
 
 module.exports = {
