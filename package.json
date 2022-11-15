@@ -1,6 +1,6 @@
 {
   "name": "@enhance/arc-plugin-rolup",
-  "version": "0.0.1-alpha.0",
+  "version": "1.0.0",
   "description": "Use rollup.js to bundle pages for the browser in your Enhance project",
   "main": "src/index.js",
   "engines": {
