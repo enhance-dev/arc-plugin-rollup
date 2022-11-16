@@ -48,8 +48,10 @@ module.exports = {
       await build(inventory.inv)
     },
 
-    async watcher ({ inventory }) {
-      await build(inventory.inv)
+    async watcher ({ filename, inventory }) {
+      if (filename.indexOf('/app/browser/') > 0) {
+        await build(inventory.inv)
+      }
     }
   },
   deploy: {
