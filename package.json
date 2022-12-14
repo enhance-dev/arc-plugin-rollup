@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "lint": "eslint src test --fix",
-    "test": "tape test/test.js"
+    "test": "tape test/test.js | tap-arc"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,10 @@
   "homepage": "https://github.com/enhance-dev/arc-plugin-rollup#readme",
   "dependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "rollup": "^3.2.5"
+    "rollup": "^3.7.4"
   },
   "devDependencies": {
-    "@architect/sandbox": "^5.3.4",
+    "@architect/sandbox": "^5.4.1",
     "tap-arc": "^0.3.5",
     "tape": "^5.6.1",
     "tiny-json-http": "^7.4.2"
