@@ -48,13 +48,14 @@ module.exports = {
       await build(inventory.inv)
     },
 
-    async watcher ({ filename, inventory }) {
-      if (filename.indexOf('/app/browser/') > -1 ||
-          filename.indexOf('/app/pages/') > -1 ||
-          filename.indexOf('/app/elements/') > -1) {
+    async watcher({ filename, inventory }) {
+      const { cwd } = inventory.inv._project
+      const appDir = join(cwd, 'app')
+
+      if (filename.indexOf(appDir) === 0) {
         await build(inventory.inv)
       }
-    }
+    },
   },
   deploy: {
     async start ({ cloudformation, inventory }) {
