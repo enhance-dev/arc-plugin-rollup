@@ -61,7 +61,8 @@ const externalRollup = async (rollupFile, inFile, outFile) => {
     rollUpConfig = options
   }
 
-  rollUpConfig.map(async config => {
+  //eslint-disable-next-line no-undef
+  await Promise.all(rollUpConfig.map(async config => {
     config.input = inFile
     config.plugins = [resolve()]
     const bundle = await rollup(config)
@@ -71,7 +72,7 @@ const externalRollup = async (rollupFile, inFile, outFile) => {
     })
     //eslint-disable-next-line no-undef
     await Promise.all(config.output.map(bundle.write))
-  })
+  }))
 }
 
 const memoize = (fn) => {
