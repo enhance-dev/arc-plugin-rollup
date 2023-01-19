@@ -30,7 +30,7 @@ async function build(inv) {
         file
       )
 
-      const rollupFile = join(cwd, 'rollup.config.js')
+      const rollupFile = join(cwd, 'rollup.config.mjs')
       if(existsSync(rollupFile)) {
         await externalRollup(rollupFile, inFile, outFile);
       } else {
@@ -84,7 +84,7 @@ const memoize = (fn) => {
       cache[obj] = await fn(obj)
       return cache[obj]
     }
-  } 
+  }
 }
 
 module.exports = {
