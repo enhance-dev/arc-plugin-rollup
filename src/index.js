@@ -64,7 +64,7 @@ const externalRollup = async (rollupFile, inFile, outFile) => {
   //eslint-disable-next-line no-undef
   await Promise.all(rollUpConfig.map(async config => {
     config.input = inFile
-    config.plugins = [resolve()]
+    config.plugins.unshift(resolve())
     const bundle = await rollup(config)
     config.output.forEach(o => {
       o.file = outFile
