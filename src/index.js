@@ -26,7 +26,7 @@ async function build(inv) {
       const outFile = join(
         cwd,
         inv.static?.folder || 'public',
-        'pages',
+        'browser',
         file
       )
 
