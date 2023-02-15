@@ -2,8 +2,9 @@ const { join } = require('path')
 const { readdir } = require('fs/promises')
 const { existsSync } = require('fs')
 const { rollup } = require('rollup')
-const { loadConfigFile } = require('rollup/loadConfigFile');
+const { loadConfigFile } = require('rollup/loadConfigFile')
 const resolve = require('@rollup/plugin-node-resolve')
+const commonjs = require('@rollup/plugin-commonjs')
 
 async function build(inv) {
   const cwd = inv._project.cwd
@@ -43,7 +44,10 @@ async function build(inv) {
 const internalRollup = async (inFile, outFile) => {
   const bundle = await rollup({
     input: inFile,
-    plugins: [resolve()]
+    plugins: [
+      resolve(),
+      commonjs()
+    ]
   })
 
   await bundle.write({
@@ -76,7 +80,7 @@ const externalRollup = async (rollupFile, inFile, outFile) => {
 }
 
 const memoize = (fn) => {
-  let cache = {};
+  let cache = {}
   return async (obj) => {
     if(obj in cache) {
       return cache[obj]
