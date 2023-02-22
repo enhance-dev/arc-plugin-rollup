@@ -20,7 +20,7 @@ test('Start sandbox', async t => {
 
 test('Get rolled up main file with Rollup config.', async t => {
   t.plan(2)
-  const url = getUrl(`/_static/pages/index.mjs`, port)
+  const url = getUrl(`/_static/browser/index.mjs`, port)
   const fileReq = await get({ url, port })
   t.ok(fileReq.body, `Page bundle exists: ${url}` )
   t.true(fileReq.body.startsWith("Hello Rollup!"), "config value used.")
